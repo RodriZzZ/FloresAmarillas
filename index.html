@@ -37,7 +37,7 @@
         .button-container {
             margin-top: 30px;
             display: inline-flex;
-            gap: 20px; /* Espacio entre botones */
+            gap: 20px;
         }
 
         button {
@@ -92,10 +92,9 @@
             z-index: 999;
         }
 
-        .video-overlay video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .video-overlay iframe {
+            width: 80%;
+            height: 80%;
         }
 
         .close-button {
@@ -111,7 +110,6 @@
             cursor: pointer;
             z-index: 1000;
         }
-
     </style>
 </head>
 <body>
@@ -125,21 +123,34 @@
         </div>
     </div>
 
-    <!-- Capa para el video a pantalla completa -->
+    <!-- Capa para el video de YouTube a pantalla completa -->
     <div class="video-overlay" id="videoOverlay">
         <button class="close-button" onclick="closeVideo()">✖</button>
-        <video controls>
-            <source src="/img/videoplayback.mp4" type="video/mp4">
-        </video>
+        <!-- Iframe para mostrar el video de YouTube -->
+        <iframe id="youtubeVideo" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
 
     <script>
         function showVideo() {
-            document.getElementById("videoOverlay").style.display = "flex";
+            var videoOverlay = document.getElementById("videoOverlay");
+            var youtubeVideo = document.getElementById("youtubeVideo");
+
+            // Cambia el enlace de YouTube al que quieras que se muestre
+            youtubeVideo.src = "https://www.youtube.com/embed/https://www.youtube.com/watch?v=IEsxQfjANi4&t=51s?autoplay=1"; // Reemplaza VIDEO_ID por el ID del video
+
+            // Mostrar el iframe con el video
+            videoOverlay.style.display = "flex";
         }
 
         function closeVideo() {
-            document.getElementById("videoOverlay").style.display = "none";
+            var videoOverlay = document.getElementById("videoOverlay");
+            var youtubeVideo = document.getElementById("youtubeVideo");
+
+            // Pausar el video eliminando la URL del iframe
+            youtubeVideo.src = "";
+
+            // Ocultar la capa del video
+            videoOverlay.style.display = "none";
         }
     </script>
 
