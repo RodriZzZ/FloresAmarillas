@@ -126,31 +126,26 @@
     <!-- Capa para el video de YouTube a pantalla completa -->
     <div class="video-overlay" id="videoOverlay">
         <button class="close-button" onclick="closeVideo()">✖</button>
-        <!-- Iframe para mostrar el video de YouTube -->
-        <iframe id="youtubeVideo" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <!-- Aquí va el iframe proporcionado por YouTube -->
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/IEsxQfjANi4?si=Y2tRGD3iwhb2edKL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
 
     <script>
         function showVideo() {
             var videoOverlay = document.getElementById("videoOverlay");
-            var youtubeVideo = document.getElementById("youtubeVideo");
-
-            // Cambia el enlace de YouTube al que quieras que se muestre
-            youtubeVideo.src = "https://www.youtube.com/embed/https://www.youtube.com/watch?v=IEsxQfjANi4&t=51s?autoplay=1"; // Reemplaza VIDEO_ID por el ID del video
-
-            // Mostrar el iframe con el video
+            // Mostrar la capa del video
             videoOverlay.style.display = "flex";
         }
 
         function closeVideo() {
             var videoOverlay = document.getElementById("videoOverlay");
             var youtubeVideo = document.getElementById("youtubeVideo");
-
-            // Pausar el video eliminando la URL del iframe
-            youtubeVideo.src = "";
-
+            
             // Ocultar la capa del video
             videoOverlay.style.display = "none";
+            
+            // Pausar el video eliminando el src del iframe
+            youtubeVideo.src = youtubeVideo.src;
         }
     </script>
 
